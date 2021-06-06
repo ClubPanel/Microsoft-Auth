@@ -5,14 +5,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uellenberg/Microsoft-Auth.git"
+    "url": "git+https://github.com/ClubPanel/Microsoft-Auth.git"
   },
   "author": "Jonah Uellenberg",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/uellenberg/Microsoft-Auth/issues"
+    "url": "https://github.com/ClubPanel/Microsoft-Auth/issues"
   },
-  "homepage": "https://github.com/uellenberg/Microsoft-Auth#readme",
+  "homepage": "https://github.com/ClubPanel/Microsoft-Auth#readme",
   "private": false,
   "dependencies": {
     "jsonwebtoken": "^8.5.1",
