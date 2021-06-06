@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "outDir": "../../dist",
+    "target": "es6",
+    "declaration": true
+  },
+  "compileOnSave": true,
+  "include": ["**/*"],
+  "exclude": ["node_modules", ".idea", ".env", "dist"]
+}

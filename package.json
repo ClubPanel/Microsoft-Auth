@@ -1,0 +1,26 @@
+{
+  "name": "microsoft-auth",
+  "version": "1.0.0",
+  "description": "An authentication module for ClubPanel to provide microsoft authentication.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uellenberg/Microsoft-Auth.git"
+  },
+  "author": "Jonah Uellenberg",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/uellenberg/Microsoft-Auth/issues"
+  },
+  "homepage": "https://github.com/uellenberg/Microsoft-Auth#readme",
+  "private": false,
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-azure-ad-oauth2": "^0.0.4"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/passport": "^1.0.6"
+  }
+}
