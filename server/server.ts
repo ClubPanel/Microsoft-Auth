@@ -1,13 +1,13 @@
 import {Express, Request, Response} from "express";
 import passport from "passport";
-import {SharedData} from "../../shared/module/moduleLoader";
+import {SharedData} from "../../../shared/module/moduleLoader";
 import {Strategy as AzureAdOAuth2Strategy} from "passport-azure-ad-oauth2";
 import jwt from "jsonwebtoken";
-import {GetConfig} from "../../shared/config/configManager";
-import {MSAuthConfig} from "./MSAuthConfig";
-import {IUser} from "../../server/database/models/user";
-import User from "../../server/database/models/user";
-import {registerAuthReq} from "../../server/util/auth";
+import {GetConfig} from "../../../shared/config/configManager";
+import {MSAuthConfig} from "../config/MSAuthConfig";
+import {IUser} from "../../../server/database/models/user";
+import User from "../../../server/database/models/user";
+import {registerAuthReq} from "../../../server/util/auth";
 
 declare module "express-session" {
   export interface SessionData {

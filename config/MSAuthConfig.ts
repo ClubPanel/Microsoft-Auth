@@ -1,4 +1,4 @@
-import {Config} from "../../shared/config/types/config";
+import {Config} from "../../../shared/config/types/config";
 
 export interface MSAuthConfig extends Config {
   clientID: string;

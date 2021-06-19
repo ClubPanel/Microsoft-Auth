@@ -1,6 +1,6 @@
 import {Module} from "../../shared/module/module";
-import {registerConfigs} from "./configs";
-import {registerServer} from "./server";
+import {registerConfigs} from "./config/configs";
+import {registerServer} from "./server/server";
 
 const output: Module = {
   configs: {

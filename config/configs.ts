@@ -1,4 +1,4 @@
-import {RegisterConfig} from "../../shared/config/configFilesManager";
+import {RegisterConfig} from "../../../shared/config/configFilesManager";
 
 export const registerConfigs = () => {
   RegisterConfig({name: "microsoft-auth.json", default: JSON.stringify(config, null, 4)});
