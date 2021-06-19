@@ -20,7 +20,7 @@
     "passport-azure-ad-oauth2": "^0.0.4"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^8.5.1",
+    "@types/jsonwebtoken": "^8.5.2",
     "@types/passport": "^1.0.6"
   }
 }
