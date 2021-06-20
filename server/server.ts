@@ -12,6 +12,7 @@ import {registerAuthReq} from "../../../server/util/auth";
 declare module "express-session" {
   export interface SessionData {
     user?: IUser;
+    lastURL?: string;
   }
 }
 
@@ -51,6 +52,7 @@ export const registerServer = (app: Express) => {
         clientSecret: configs.clientSecret,
         callbackURL: configs.baseURL + configs.callbackLocation,
         tenant: configs.tenant,
+        authorizationURL: "https://login.microsoftonline.com/" + configs.tenant + "/oauth2/authorize" + "?prompt=select_account"
       },
       function (accessToken, refresh_token, params, profile, done) {
         // currently we can't find a way to exchange access token by user info (see userProfile implementation), so
@@ -90,9 +92,10 @@ export const registerServer = (app: Express) => {
 
         await user.save();
 
-        req.session.user = user;
+        req.session.user = <IUser>user.toObject();
       }
 
-      res.redirect("/");
+      res.redirect(req.session.lastURL || "/");
+      req.session.lastURL = null;
     });
 };

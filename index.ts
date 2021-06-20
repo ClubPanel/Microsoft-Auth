@@ -9,7 +9,7 @@ const output: Module = {
   server: {
     register: registerServer
   },
-  priority: 1178
+  priority: 1256
 };
 
 export default output;
