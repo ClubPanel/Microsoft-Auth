@@ -28,7 +28,7 @@ declare global {
 }
 
 export const registerServer = (app: Express) => {
-  const configs = GetConfig<MSAuthConfig>("microsoft-auth.json");
+  const configs = GetConfig<MSAuthConfig>("server/microsoft-auth.json");
 
   registerAuthReq((req: Request, res: Response) => {
     if(!req.session.user) {
