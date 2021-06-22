@@ -2,7 +2,6 @@
   "name": "microsoft-auth",
   "version": "1.0.0",
   "description": "An authentication module for ClubPanel to provide microsoft authentication.",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ClubPanel/Microsoft-Auth.git"
