@@ -5,7 +5,7 @@ import {Strategy as AzureAdOAuth2Strategy} from "passport-azure-ad-oauth2";
 import jwt from "jsonwebtoken";
 import {GetConfig} from "../../../shared/config/configStore";
 import {MSAuthConfig} from "../config/MSAuthConfig";
-import {IUser} from "../../../server/database/models/user";
+import {getUsersCount, IUser} from "../../../server/database/models/user";
 import User from "../../../server/database/models/user";
 import {registerAuthReq} from "../../../server/util/auth";
 
@@ -101,14 +101,4 @@ export const registerServer = (app: Express) => {
       res.redirect(req.session.lastURL || "/");
       req.session.lastURL = null;
     });
-};
-
-const getUsersCount = () : Promise<number> => {
-  return new Promise<number>((resolve, reject) => {
-    User.count((err, count) => {
-      if(err) return reject(err);
-
-      resolve(count);
-    });
-  });
 };
