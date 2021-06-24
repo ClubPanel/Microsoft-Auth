@@ -80,8 +80,11 @@ export const registerServer = (app: Express) => {
       if(foundUser) {
         req.session.user = foundUser;
       } else {
+        const count = await getUsersCount();
+
         const user = new User({
           username: req.user.given_name,
+          permissions: (count === 0 ? ["owner", "admin"] : []),
           modules: {
             msauth: {
               oid: req.user.oid,
@@ -98,4 +101,14 @@ export const registerServer = (app: Express) => {
       res.redirect(req.session.lastURL || "/");
       req.session.lastURL = null;
     });
+};
+
+const getUsersCount = () : Promise<number> => {
+  return new Promise<number>((resolve, reject) => {
+    User.count((err, count) => {
+      if(err) return reject(err);
+
+      resolve(count);
+    });
+  });
 };
