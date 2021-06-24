@@ -66,6 +66,8 @@ export const registerServer = (app: Express) => {
 
   app.get(configs.authURL, passport.authenticate("azure_ad_oauth2"));
 
+  let createdOwner = false;
+
   app.get(
     configs.callbackLocation,
     passport.authenticate("azure_ad_oauth2", {
@@ -81,6 +83,7 @@ export const registerServer = (app: Express) => {
         req.session.user = foundUser;
       } else {
         const count = await getUsersCount();
+        if(count === 0) createdOwner = true;
 
         const user = new User({
           username: req.user.given_name,
@@ -101,4 +104,12 @@ export const registerServer = (app: Express) => {
       res.redirect(req.session.lastURL || "/");
       req.session.lastURL = null;
     });
+
+  app.use(async (req, res, next) => {
+    if(!createdOwner && await getUsersCount() === 0) {
+      return res.redirect(configs.authURL);
+    }
+
+    next();
+  });
 };
