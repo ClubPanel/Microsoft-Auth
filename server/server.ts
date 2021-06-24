@@ -110,6 +110,7 @@ export const registerServer = (app: Express) => {
       return res.redirect(configs.authURL);
     }
 
+    createdOwner = true;
     next();
   });
 };
