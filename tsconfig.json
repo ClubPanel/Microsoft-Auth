@@ -6,10 +6,10 @@
     "esModuleInterop": true,
     "outDir": "../../dist",
     "target": "es6",
-    "declaration": true,
+    "declaration": false,
     "skipLibCheck": true
   },
   "compileOnSave": true,
   "include": ["**/*"],
-  "exclude": ["node_modules", ".idea", ".env", "dist"]
+  "exclude": ["node_modules", ".idea", ".env", "dist", "client"]
 }
