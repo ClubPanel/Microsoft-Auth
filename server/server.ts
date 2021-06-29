@@ -86,12 +86,12 @@ export const registerServer = (app: Express) => {
         if(count === 0) createdOwner = true;
 
         const user = new User({
+          email: req.user.upn,
           username: req.user.given_name,
           permissions: (count === 0 ? ["owner", "admin"] : []),
           modules: {
             msauth: {
-              oid: req.user.oid,
-              email: req.user.upn
+              oid: req.user.oid
             }
           }
         });
