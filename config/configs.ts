@@ -13,5 +13,9 @@ const config = {
   __comment__tenent: "The below field refers to the domain that accounts must be part of to sign in.",
   tenant: "example.com",
   __comment__authLocation: "The below field is the location that will redirect users to the login page.",
-  authURL: "/login"
+  authURL: "/login",
+  __comment__updateEmail: "The below field indicates whether a user's email in ClubPanel should be updated to match their microsoft email, if it changes.",
+  updateEmail: true,
+  __comment__updateUsername: "The below field indicates whether a user's username in ClubPanel should be updated to match their microsoft username, if it changes.",
+  updateUsername: false
 };

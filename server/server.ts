@@ -80,7 +80,23 @@ export const registerServer = (app: Express) => {
       const foundUser = await User.findOne({"modules.msauth.oid": req.user.oid});
 
       if(foundUser) {
-        req.session.user = foundUser;
+        let flag = false;
+
+        if(configs.updateEmail && req.session.user.email !== req.user.upn) {
+          foundUser.email = req.user.upn;
+          flag = true;
+        }
+
+        if(configs.updateUsername && req.session.user.username !== req.user.given_name) {
+          foundUser.username = req.user.given_name;
+          flag = true;
+        }
+
+        if(flag) {
+          await foundUser.save();
+        }
+
+        req.session.user = <IUser>foundUser.toObject();
       } else {
         const count = await getUsersCount();
         if(count === 0) createdOwner = true;

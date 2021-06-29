@@ -7,4 +7,6 @@ export interface MSAuthConfig extends Config {
   callbackLocation: string;
   tenant: string;
   authURL: string;
+  updateEmail: boolean;
+  updateUsername: boolean;
 }
