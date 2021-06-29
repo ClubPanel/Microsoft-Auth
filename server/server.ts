@@ -82,12 +82,12 @@ export const registerServer = (app: Express) => {
       if(foundUser) {
         let flag = false;
 
-        if(configs.updateEmail && req.session.user.email !== req.user.upn) {
+        if(configs.updateEmail && foundUser.email !== req.user.upn) {
           foundUser.email = req.user.upn;
           flag = true;
         }
 
-        if(configs.updateUsername && req.session.user.username !== req.user.given_name) {
+        if(configs.updateUsername && foundUser.username !== req.user.given_name) {
           foundUser.username = req.user.given_name;
           flag = true;
         }
