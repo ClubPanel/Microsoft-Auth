@@ -37,7 +37,7 @@ export const registerServer = (app: Express) => {
     }
 
     return false;
-  });
+  }, 1000);
 
   if(!SharedData["passport"]) {
     app.use(passport.initialize());
