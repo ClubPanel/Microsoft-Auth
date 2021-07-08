@@ -21,6 +21,7 @@ declare global {
   namespace Express {
     interface User {
       given_name: string;
+      family_name: string;
       upn: string;
       oid: string;
     }
@@ -87,8 +88,8 @@ export const registerServer = (app: Express) => {
           flag = true;
         }
 
-        if(configs.updateUsername && foundUser.username !== req.user.given_name) {
-          foundUser.username = req.user.given_name;
+        if(configs.updateUsername && foundUser.username !== req.user.given_name+" "+req.user.family_name) {
+          foundUser.username = req.user.given_name+" "+req.user.family_name;
           flag = true;
         }
 
@@ -103,7 +104,7 @@ export const registerServer = (app: Express) => {
 
         const user = new User({
           email: req.user.upn,
-          username: req.user.given_name,
+          username: req.user.given_name+" "+req.user.family_name,
           permissions: (count === 0 ? ["owner", "admin"] : []),
           modules: {
             msauth: {
