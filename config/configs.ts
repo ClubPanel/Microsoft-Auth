@@ -1,10 +1,11 @@
 import {RegisterConfig} from "../../../shared/config/configFilesManager";
+import {MSAuthConfig} from "./MSAuthConfig";
 
 export const registerConfigs = () => {
   RegisterConfig({name: "server/microsoft-auth.json", default: config});
 };
 
-const config = {
+const config: MSAuthConfig = {
   clientID: "CLIENT ID",
   clientSecret: "CLIENT SECRET",
   __comment__URLS: "The below URLS refer to the path users will be redirected to to complete sign-in. The baseURL should be the part of the url with no path, and the callbackURL should be the path of the URL.",
@@ -17,5 +18,6 @@ const config = {
   __comment__updateEmail: "The below field indicates whether a user's email in ClubPanel should be updated to match their microsoft email, if it changes.",
   updateEmail: true,
   __comment__updateUsername: "The below field indicates whether a user's username in ClubPanel should be updated to match their microsoft username, if it changes.",
-  updateUsername: false
+  updateUsername: false,
+  logoutURL: "/logout"
 };

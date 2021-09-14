@@ -7,7 +7,8 @@ import {GetConfig} from "../../../shared/config/configStore";
 import {MSAuthConfig} from "../config/MSAuthConfig";
 import {getUsersCount, IUser} from "../../../server/database/models/user";
 import User from "../../../server/database/models/user";
-import {registerAuthReq} from "../../../server/util/auth";
+import {registerAuthReq, requireAuth} from "../../../server/util/auth";
+import {requireBaseReferrer} from "../../../server/util/referrer";
 
 declare module "express-session" {
   export interface SessionData {
@@ -129,5 +130,12 @@ export const registerServer = (app: Express) => {
 
     createdOwner = true;
     next();
+  });
+
+  app.get(configs.logoutURL, requireBaseReferrer(), requireAuth(), (req, res) => {
+    req.session.destroy((err) => {
+      if(err) res.status(500).send("An error occurred. Please try again.");
+      else res.redirect("/");
+    });
   });
 };

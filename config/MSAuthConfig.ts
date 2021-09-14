@@ -9,4 +9,5 @@ export interface MSAuthConfig extends Config {
   authURL: string;
   updateEmail: boolean;
   updateUsername: boolean;
+  logoutURL: string;
 }
